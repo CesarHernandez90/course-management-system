@@ -20,7 +20,7 @@
     @include('includes/styles')
 </head>
 <body>
-<div class="wrapper">
+<div class="wrapper ">
 
     {{-- Sidebar --}}
     @include('includes/sidebar')
@@ -31,9 +31,9 @@
         @include('includes/navbar')
 
         <div class="content">
-            <div class="container-fuild">
+            <div class="container-fluid">
                 <div class="row">
-    
+                    
                     {{-- Content --}}
                     @yield('content')
     

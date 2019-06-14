@@ -19,7 +19,7 @@
                 <a class="nav-link"
                     href="">
                     <i class="material-icons">dashboard</i>
-                    <p>Dashboard</p>
+                    <p>Departamentos</p>
                 </a>
             </li>
 

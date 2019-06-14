@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Department;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DepartmentController extends Controller
 {
@@ -14,7 +15,8 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        //
+        $departments = DB::table('departments')->paginate(10);
+        return view('department/index-department', compact(['departments']));
     }
 
     /**
@@ -78,8 +80,10 @@ class DepartmentController extends Controller
      * @param  \App\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Department $department)
+    public function destroy(Request $request)
     {
-        //
+        DB::table('departments')->where('id', '=', $request->id)->delete();
+        return redirect()->route('department.index')
+        ->with('success','Departamento ' . $request->name . ' eliminado satisfactoriamente');
     }
 }

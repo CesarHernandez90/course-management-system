@@ -39,7 +39,22 @@
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="{{asset('./js/material-dashboard.js?v=2.1.1')}}" type="text/javascript"></script>
 
-{{-- Scripts --}}
+{{-- My Scripts --}}
+<script>
+    $('#deleteModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget)
+        var id = button.data('id')
+        var name = button.data('name')
+    
+        var modal = $(this)
+        modal.find('.modal-title').text('Eliminar (' + id + ')')
+        modal.find('.modal-body #deleteName').text('Esta realmente seguro de que quiere eliminar a ' + name)
+        modal.find('.modal-footer #deleteId').val(id)
+        modal.find('.modal-footer #deleteName').val(name)
+    })
+</script>
+
+{{-- Template Scripts --}}
 <script>
     $(document).ready(function() {
       $().ready(function() {
