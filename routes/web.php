@@ -15,7 +15,15 @@ Route::get('/', function () {
     return redirect('/department');
 });
 
-Route::resource('/department', 'DepartmentController');
+Route::group(['middleware' => ['permission:put department']], function () {
+    Route::resource('/department', 'DepartmentController')->only([
+        'edit', 'update'
+    ]);
+});
+
+Route::resource('/department', 'DepartmentController')->except([
+    'edit', 'update'
+]);
 
 Auth::routes();
 

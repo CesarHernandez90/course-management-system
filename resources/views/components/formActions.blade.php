@@ -1,21 +1,25 @@
 <td class="actions text-right">
 
-    <a rel="tooltip" 
-        class="btn btn-success btn-sm"
-        href="{{route($route . '.edit', $id)}}">
-        <i class="material-icons">edit</i>
-    </a>
+    @can('put ' . $route)
+        <a rel="tooltip" 
+            class="btn btn-success btn-sm"
+            href="{{route($route . '.edit', $id)}}">
+            <i class="material-icons">edit</i>
+        </a>
+    @endcan
 
-    <button 
-        type="button" 
-        rel="tooltip" 
-        class="btn btn-danger btn-sm"
-        data-toggle="modal"
-        data-target="#deleteModal"
-        data-id="{{$id}}"
-        data-name="{{$name}}">
-        <i class="material-icons">close</i>
-    </button>  
+    @can('delete ' . $route)
+        <button 
+            type="button" 
+            rel="tooltip" 
+            class="btn btn-danger btn-sm"
+            data-toggle="modal"
+            data-target="#deleteModal"
+            data-id="{{$id}}"
+            data-name="{{$name}}">
+            <i class="material-icons">close</i>
+        </button>
+    @endcan
 
 </td>
 
