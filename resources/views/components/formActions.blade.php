@@ -1,8 +1,10 @@
 <td class="actions text-right">
 
-    <button type="button" rel="tooltip" class="btn btn-success btn-sm">
+    <a rel="tooltip" 
+        class="btn btn-success btn-sm"
+        href="{{route($route . '.edit', $id)}}">
         <i class="material-icons">edit</i>
-    </button>
+    </a>
 
     <button 
         type="button" 
@@ -31,7 +33,7 @@
                 <p id="deleteName"></p>
             </div>
             <div class="modal-footer">
-            <form action="{{route($route, 'null')}}" , method="POST">
+            <form action="{{route($route . '.destroy', 'null')}}" , method="POST">
                     @csrf
                     @method('DELETE')
                     <input type="hidden" id="deleteId" name="id">

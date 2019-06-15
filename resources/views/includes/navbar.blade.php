@@ -7,10 +7,7 @@
 
         {{-- Navbar Title --}}
         <div class="navbar-wrapper">
-            <a class="navbar-brand" 
-                href="#pablo">
-                @yield('navbar-title')
-            </a>
+            @yield('navbar-title')
         </div>
 
         {{-- Toggle Button --}}
@@ -25,7 +22,6 @@
         <div class="collapse navbar-collapse justify-content-end">
 
             <div class="navbar-form">
-
             </div>
 
             <ul class="navbar-nav">

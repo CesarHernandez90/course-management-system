@@ -1,10 +1,16 @@
 @extends('layouts/main-layout')
 
 @section('title', 'Departamentos')
-@section('navbar-title', 'Departamentos')
+@section('navbar-title', '')
 
 @section('content')
     <div class="col-md-12">
+
+        <a class="btn btn-info"
+            href="{{route('department.create')}}">
+            Nuevo departamento
+        </a>
+
         <div class="card">
             <div class="card-body">
 
@@ -18,11 +24,11 @@
                         @foreach ($departments as $department)
                             <tr>
                                 <td>{{$department->name}}</td>
-                                @component('components/formActions', [
+                                @formActions([
                                     'id' => $department->id,
                                     'name' => $department->name,
-                                    'route' => 'department.destroy'
-                                ]) @endcomponent
+                                    'route' => 'department'
+                                ]) @endformActions
                             </tr>
                         @endforeach
                     </tbody>

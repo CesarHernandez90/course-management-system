@@ -1,7 +1,7 @@
 <div class="sidebar"
     data-color="purple"
     data-background-color="white"
-    data-image="./img/sidebar-1.jpg">
+    data-image="{{asset('img/sidebar-1.jpg')}}">
 
     {{-- Logo --}}
     <div class="logo">
@@ -17,7 +17,7 @@
 
             <li class="nav-item active">
                 <a class="nav-link"
-                    href="">
+                    href="{{route('department.index')}}">
                     <i class="material-icons">dashboard</i>
                     <p>Departamentos</p>
                 </a>

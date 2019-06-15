@@ -30,7 +30,7 @@
         <!-- Navbar -->
         @include('includes/navbar')
 
-        <div class="content">
+        <div class="content mtop-0">
             <div class="container-fluid">
                 <div class="row">
                     

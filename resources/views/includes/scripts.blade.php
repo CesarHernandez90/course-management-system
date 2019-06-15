@@ -47,7 +47,7 @@
         var name = button.data('name')
     
         var modal = $(this)
-        modal.find('.modal-title').text('Eliminar (' + id + ')')
+        modal.find('.modal-title').text('Eliminar (ID: ' + id + ')')
         modal.find('.modal-body #deleteName').text('Esta realmente seguro de que quiere eliminar a ' + name)
         modal.find('.modal-footer #deleteId').val(id)
         modal.find('.modal-footer #deleteName').val(name)
