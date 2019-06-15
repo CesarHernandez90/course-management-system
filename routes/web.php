@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return redirect('/department');
+    return redirect('/login');
 });
 
 Route::group(['middleware' => ['permission:put department']], function () {

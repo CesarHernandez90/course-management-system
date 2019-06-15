@@ -7,12 +7,23 @@
     <div class="logo">
         <a href="" 
             class="simple-text logo-normal">
-            Sistema de cursos
+            {{ Auth::user()->name }}
         </a>
+        <a class="simple-link" 
+            href="{{ route('logout') }}"
+            onclick="
+                event.preventDefault();
+                document.getElementById('logout-form').submit();">
+            Cerrar sesión
+        </a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
     </div>
 
     {{-- Menu --}}
     <div class="sidebar-wrapper">
+
         <ul class="nav">
 
             <li class="nav-item active">
@@ -22,6 +33,7 @@
                     <p>Departamentos</p>
                 </a>
             </li>
+
 
 
         </ul>

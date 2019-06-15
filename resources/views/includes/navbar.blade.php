@@ -18,6 +18,7 @@
             <span class="navbar-toggler-icon icon-bar"></span>
         </button>
 
+
         {{-- Menu --}}
         <div class="collapse navbar-collapse justify-content-end">
 
