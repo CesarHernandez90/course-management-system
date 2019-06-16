@@ -26,6 +26,14 @@
 
         <ul class="nav">
 
+            <li class="nav-item {{ request()->is('user*') ? 'active' : '' }}">
+                <a class="nav-link"
+                    href="{{route('user.index')}}">
+                    <i class="material-icons">supervisor_account</i>
+                    <p>Usuarios</p>
+                </a>
+            </li>
+            
             <li class="nav-item {{ request()->is('department*') ? 'active' : '' }}">
                 <a class="nav-link"
                     href="{{route('department.index')}}">

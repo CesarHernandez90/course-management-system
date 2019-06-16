@@ -12,14 +12,15 @@
 */
 
 Route::get('/', function () {
-    return redirect('/login');
+    return redirect('/user');
 });
 
 Route::group(['middleware' => ['role:super-admin']], function () {
+    Route::resource('/user', 'UserController');
     Route::resource('/department', 'DepartmentController');
     Route::resource('/coursetype', 'CourseTypeController');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');

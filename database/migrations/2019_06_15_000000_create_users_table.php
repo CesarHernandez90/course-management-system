@@ -21,6 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->bigInteger('id_department')->unsigned()->nullable();
+            $table->foreign('id_department')->references('id')->on('departments');
         });
     }
 

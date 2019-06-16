@@ -28,6 +28,11 @@ class RoleAndPermissionSeeder extends Seeder
         Permission::create(['name' => 'put coursetype']);
         Permission::create(['name' => 'delete coursetype']);
 
+        Permission::create(['name' => 'get user']);
+        Permission::create(['name' => 'post user']);
+        Permission::create(['name' => 'put user']);
+        Permission::create(['name' => 'delete user']);
+
         $role = Role::create(['name' => 'moderator']);
         $role->givePermissionTo(['get department', 'post department']);
 
@@ -37,14 +42,16 @@ class RoleAndPermissionSeeder extends Seeder
         $moderator = User::create([
             'name' => 'Mojica',
             'email' => 'mojica@gmail.com',
-            'password' => bcrypt('12345678')
+            'password' => bcrypt('12345678'),
+            'id_department' => 1,
         ]);
         $moderator->assignRole('moderator');
 
         $admin = User::create([
             'name' => 'Yecka',
             'email' => 'yecka@gmail.com',
-            'password' => bcrypt('12345678')
+            'password' => bcrypt('12345678'),
+            'id_department' => 2,
         ]);
         $admin->assignRole('super-admin');
     }
