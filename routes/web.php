@@ -19,6 +19,7 @@ Route::group(['middleware' => ['role:super-admin']], function () {
     Route::resource('/user', 'UserController');
     Route::resource('/department', 'DepartmentController');
     Route::resource('/coursetype', 'CourseTypeController');
+    Route::get('/course', 'CourseController@index')->name('course.index');
 });
 
 Auth::routes();

@@ -42,6 +42,14 @@
                 </a>
             </li>
 
+            <li class="nav-item {{ request()->is('course*') ? 'active' : '' }}">
+                <a class="nav-link"
+                    href="{{route('course.index')}}">
+                    <i class="material-icons">library_books</i>
+                    <p>Cursos</p>
+                </a>
+            </li>
+
             <li class="nav-item {{ request()->is('coursetype*') ? 'active' : '' }}">
                 <a class="nav-link"
                     href="{{route('coursetype.index')}}">

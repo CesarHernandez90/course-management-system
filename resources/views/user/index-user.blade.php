@@ -14,7 +14,7 @@
         <div class="card">
             <div class="card-body">
 
-                <table class="table">
+                <table class="table table-hover">
                     <thead class="text-primary">
                         <th>Nombre</th>
                         <th>Email</th>
