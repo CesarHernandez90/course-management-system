@@ -2,7 +2,7 @@
 
     @can('put ' . $route)
         <a rel="tooltip" 
-            class="btn btn-success btn-sm"
+            class="btn btn-primary btn-sm btn-link"
             href="{{route($route . '.edit', $id)}}">
             <i class="material-icons">edit</i>
         </a>
@@ -12,7 +12,7 @@
         <button 
             type="button" 
             rel="tooltip" 
-            class="btn btn-danger btn-sm"
+            class="btn btn-danger btn-sm btn-link"
             data-toggle="modal"
             data-target="#deleteModal"
             data-id="{{$id}}"

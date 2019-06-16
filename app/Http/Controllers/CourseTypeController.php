@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\CourseType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\CourseTypeRequest;
 
 class CourseTypeController extends Controller
 {
@@ -14,7 +16,8 @@ class CourseTypeController extends Controller
      */
     public function index()
     {
-        //
+        $coursetypes = DB::table('course_types')->paginate(10);
+        return view('course_type/index-course-type', compact(['coursetypes']));
     }
 
     /**
@@ -24,7 +27,7 @@ class CourseTypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('course_type/create-course-type');
     }
 
     /**
@@ -33,9 +36,11 @@ class CourseTypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CourseTypeRequest $request)
     {
-        //
+        CourseType::create($request->all());
+        return redirect()->route('coursetype.index')->
+        with('success', 'Tipo de curso agregado con éxito');
     }
 
     /**
@@ -57,7 +62,7 @@ class CourseTypeController extends Controller
      */
     public function edit(CourseType $courseType)
     {
-        //
+        return view('course_type/edit-course-type', compact(['coursetype']));
     }
 
     /**
@@ -67,9 +72,11 @@ class CourseTypeController extends Controller
      * @param  \App\CourseType  $courseType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CourseType $courseType)
+    public function update(CourseTypeRequest $request, CourseType $courseType)
     {
-        //
+        $courseType->update($request->all());
+        return redirect()->route('coursetype.index')
+        ->with('success','Tipo de curso ' . $request->name . ' actualizado satisfactoriamente');
     }
 
     /**
@@ -78,8 +85,10 @@ class CourseTypeController extends Controller
      * @param  \App\CourseType  $courseType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CourseType $courseType)
+    public function destroy(Request $request)
     {
-        //
+        DB::table('course_types')->where('id', '=', $request->id)->delete();
+        return redirect()->route('coursetype.index')
+        ->with('success','Tipo de curso ' . $request->name . ' eliminado satisfactoriamente');
     }
 }

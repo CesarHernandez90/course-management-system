@@ -26,15 +26,21 @@
 
         <ul class="nav">
 
-            <li class="nav-item active">
+            <li class="nav-item {{ request()->is('department*') ? 'active' : '' }}">
                 <a class="nav-link"
                     href="{{route('department.index')}}">
-                    <i class="material-icons">dashboard</i>
+                    <i class="material-icons">local_library</i>
                     <p>Departamentos</p>
                 </a>
             </li>
 
-
+            <li class="nav-item {{ request()->is('coursetype*') ? 'active' : '' }}">
+                <a class="nav-link"
+                    href="{{route('coursetype.index')}}">
+                    <i class="material-icons">library_books</i>
+                    <p>Tipos de cursos</p>
+                </a>
+            </li>
 
         </ul>
     </div>

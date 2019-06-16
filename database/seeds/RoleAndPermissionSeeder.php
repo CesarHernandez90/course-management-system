@@ -23,6 +23,11 @@ class RoleAndPermissionSeeder extends Seeder
         Permission::create(['name' => 'put department']);
         Permission::create(['name' => 'delete department']);
 
+        Permission::create(['name' => 'get coursetype']);
+        Permission::create(['name' => 'post coursetype']);
+        Permission::create(['name' => 'put coursetype']);
+        Permission::create(['name' => 'delete coursetype']);
+
         $role = Role::create(['name' => 'moderator']);
         $role->givePermissionTo(['get department', 'post department']);
 

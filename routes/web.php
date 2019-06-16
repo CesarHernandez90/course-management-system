@@ -15,15 +15,10 @@ Route::get('/', function () {
     return redirect('/login');
 });
 
-Route::group(['middleware' => ['permission:put department']], function () {
-    Route::resource('/department', 'DepartmentController')->only([
-        'edit', 'update'
-    ]);
+Route::group(['middleware' => ['role:super-admin']], function () {
+    Route::resource('/department', 'DepartmentController');
+    Route::resource('/coursetype', 'CourseTypeController');
 });
-
-Route::resource('/department', 'DepartmentController')->except([
-    'edit', 'update'
-]);
 
 Auth::routes();
 
