@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return redirect('/user');
+    return redirect('/login');
 });
 
 Route::group(['middleware' => ['role:super-admin']], function () {
@@ -23,4 +23,4 @@ Route::group(['middleware' => ['role:super-admin']], function () {
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
