@@ -30,7 +30,7 @@
                                     @endforeach
                                     <div class="dropdown-divider"></div>
                                         <a class="dropdown-item text-warning text-uppercase" 
-                                            href="#">
+                                            href="{{route('period.create')}}">
                                             Crear un nuevo periodo
                                         </a>
                                     </div>

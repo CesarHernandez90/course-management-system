@@ -5,7 +5,8 @@
 <script src="{{asset('./js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
 
   <!-- Plugin for the momentJs  -->
-  <script src="{{asset('./js/plugins/moment.min.js')}}"></script>
+<script src="{{asset('./js/plugins/moment.min.js')}}"></script>
+<script src="{{asset('./js/plugins/moment-es.js')}}"></script>
 <!--  Plugin for Sweet Alert -->
 <script src="{{asset('./js/plugins/sweetalert2.js')}}"></script>
 <!-- Forms Validations Plugin -->
@@ -39,7 +40,7 @@
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="{{asset('./js/material-dashboard.js?v=2.1.1')}}" type="text/javascript"></script>
 
-{{-- My Scripts --}}
+{{-- Delete modal --}}
 <script>
     $('#deleteModal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget)
@@ -54,7 +55,25 @@
     })
 </script>
 
-{{-- Template Scripts --}}
+{{-- Date time picker --}}
+<script>
+  $('.datetimepicker').datetimepicker({
+    icons: {
+        time: "fa fa-clock-o",
+        date: "fa fa-calendar",
+        up: "fa fa-chevron-up",
+        down: "fa fa-chevron-down",
+        previous: 'fa fa-chevron-left',
+        next: 'fa fa-chevron-right',
+        today: 'fa fa-screenshot',
+        clear: 'fa fa-trash',
+        close: 'fa fa-remove'
+    },
+    format: 'DD/MM/YYYY',
+    locale: 'es',
+  });
+</script>
+
 <script>
     $(document).ready(function() {
       $().ready(function() {

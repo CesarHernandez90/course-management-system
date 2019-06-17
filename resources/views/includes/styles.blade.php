@@ -1,5 +1,7 @@
 <link rel="stylesheet"
     href="{{asset('css/material-dashboard.css?v=2.1.1')}}" />
+<link rel="stylesheet"
+    href="{{asset('css/plugins/bootstrap-datetimepicker.css')}}" />
 
 <link rel="stylesheet"
     type="text/css"
@@ -9,3 +11,5 @@
 
 <link rel="stylesheet" 
     href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+
+
