@@ -18,7 +18,7 @@ class CreateCoursesTable extends Migration
             $table->string('name', 150);
             $table->string('schedule', 150)->nullable();
             $table->text('description')->nullable();
-            /* $table->string('img', 150)->nullable(); */
+            $table->string('img', 150)->nullable()->default('default.jpg');
             $table->timestamps();
             $table->bigInteger('id_course_type')->unsigned();
             $table->bigInteger('id_period')->unsigned();

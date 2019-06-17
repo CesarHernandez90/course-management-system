@@ -14,6 +14,13 @@ class CourseSeeder extends Seeder
     public function run()
     {
         DB::table('periods')->insert([
+            'name' => 'Enero - Junio 2019',
+            'start' => Date::today(),
+            'end' => Date::today(),
+            'active' => false
+        ]);
+
+        DB::table('periods')->insert([
             'name' => 'Agosto - Diciembre 2019',
             'start' => Date::today(),
             'end' => Date::today(),

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\Period;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,11 +15,34 @@ class CourseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+    {   
+        $selectedPeriod = DB::table('periods')->
+        orderBy('id', 'desc')->oldest()->value('id');
+        return redirect(route('course.period', $selectedPeriod));
+    }
+
+    public function period(Period $period) 
     {
+        $selectedPeriod = DB::table('periods')->
+        where('id', '=', $period->id)->latest()->get();
+
         $periods = DB::table('periods')->get();
-        $courses = DB::table('courses')->get();
+        $courses = DB::table('courses')->
+        where('id_period', '=', $period->id)->
+        join('departments', 'courses.id_department', 'departments.id')->
+        join('course_types', 'courses.id_course_type', 'course_types.id')->
+        join('periods', 'courses.id_period', 'periods.id')->
+        join('users', 'courses.id_teacher', 'users.id')->
+        select(
+            'courses.*',
+            'departments.name as department',
+            'course_types.name as course_type',
+            'periods.name as period',
+            'users.name as teacher')->
+        get();
+
         return view('course/index-course',
-            compact(['periods', 'courses']));
+            compact(['periods', 'courses', 'selectedPeriod']));
     }
 
     /**
@@ -26,9 +50,11 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Period $period)
     {
-        //
+        return $period;
+        /* return view('course/create-course',
+            compact(['period'])); */
     }
 
     /**
