@@ -38,7 +38,7 @@
 <!--  Notifications Plugin    -->
 <script src="{{asset('./js/plugins/bootstrap-notify.js')}}"></script>
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="{{asset('./js/material-dashboard.js?v=2.1.1')}}" type="text/javascript"></script>
+<script src="{{asset('./js/material-dashboard.js?v=2.1.1')}}" type="text/javascript"></script>>
 
 {{-- Delete modal --}}
 <script>
@@ -69,7 +69,7 @@
         clear: 'fa fa-trash',
         close: 'fa fa-remove'
     },
-    format: 'DD/MM/YYYY',
+    format: 'YYYY/MM/DD',
     locale: 'es',
   });
 </script>

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PeriodRequest extends FormRequest
+class CourseRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,12 +26,18 @@ class PeriodRequest extends FormRequest
         return [
             'name' => [
                 'required',
+                'max:50'
+            ],
+            'schedule' => [
                 'max:150'
             ],
-            'start' => [
+            'id_course_type' => [
                 'required'
             ],
-            'end' => [
+            'id_period' => [
+                'required'
+            ],
+            'id_department' => [
                 'required'
             ]
         ];
@@ -40,8 +46,9 @@ class PeriodRequest extends FormRequest
     public function messages() {
         return [
             'name.required' => 'El nombre es obligatorio',
-            'start.required' => 'La fecha de inicio es obligatoria',
-            'end.required' => 'La fecha de cierre es obligatoria'
+            'schedule.max' => 'La descripción del horario contiene demasiados caracteres',
+            'id_course_type' => 'El tipo de curso es obligatorio',
+            'id_period' => 'El periodo es obligatorio',
         ];
     }
 }

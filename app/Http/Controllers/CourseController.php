@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Course;
 use App\Period;
+use App\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\CourseRequest;
 
 class CourseController extends Controller
 {
@@ -52,9 +54,11 @@ class CourseController extends Controller
      */
     public function create(Period $period)
     {
-        return $period;
-        /* return view('course/create-course',
-            compact(['period'])); */
+        $courseTypes = DB::table('course_types')->get();
+        $teachers = DB::table('users')->
+        where('id_department', '=', auth()->user()->id_department)->get();
+        return view('course/create-course',
+            compact(['period', 'courseTypes', 'teachers']));
     }
 
     /**
@@ -63,9 +67,26 @@ class CourseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CourseRequest $request)
     {
-        //
+        if($request->hasFile('img')) {
+            $file = $request->file('img');
+            $name = time() . $file->getClientOriginalName();
+            $file->move(public_path() . '/share/course/', $name);
+        }
+
+        DB::table('courses')->insert([
+            'name' => $request->name,
+            'schedule' => $request->schedule,
+            'description' => $request->description,
+            'img' => $name,
+            'id_course_type' => $request->id_course_type,
+            'id_period' => $request->id_period,
+            'id_department' => $request->id_department,
+            'id_teacher' => $request->id_teacher
+        ]);
+
+        return redirect()->route('course.period', $request->id_period);
     }
 
     /**
@@ -76,7 +97,7 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        //
+        echo($course);
     }
 
     /**

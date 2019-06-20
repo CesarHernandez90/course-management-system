@@ -11,7 +11,7 @@
             Nuevo departamento
         </a>
 
-        <div class="card">
+        <div class="card" style="margin-top: 5px;">
             <div class="card-body">
 
                 <table class="table table-hover">

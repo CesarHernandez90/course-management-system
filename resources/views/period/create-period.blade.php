@@ -32,15 +32,35 @@
                     <!-- input with datetimepicker -->
                     <div class="form-group">
                         <label class="label-control">Fecha de inicio</label>
-                        <input type="text" class="form-control datetimepicker" value="" />
+                        <input type="text" class="form-control datetimepicker" name="start" />
+                        @if ($errors->first('start'))
+                            @foreach ($errors->get('start') as $error)
+                                <small class="form-text text-muted text-danger">
+                                    {{$error}}
+                                </small>
+                            @endforeach
+                        @endif
                     </div>
 
                     <!-- input with datetimepicker -->
                     <div class="form-group">
-                        <label class="label-control">Fecha de cierre</label>
-                        <input type="text" class="form-control datetimepicker" value="" />
+                        <label class="label-control" name="end">Fecha de cierre</label>
+                        <input type="text" class="form-control datetimepicker" name="end" />
+                        @if ($errors->first('end'))
+                            @foreach ($errors->get('end') as $error)
+                                <small class="form-text text-muted text-danger">
+                                    {{$error}}
+                                </small>
+                            @endforeach
+                        @endif
                     </div>
-                            
+
+                    <button type="submit" class="btn btn-primary">
+                        Crear periodo
+                    </button>
+                    <a class="btn btn-info" href="{{route('course.index')}}">
+                        Cancelar
+                    </a>                           
                 </form>
             </div>
         </div>

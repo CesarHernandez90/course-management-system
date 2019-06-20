@@ -38,6 +38,7 @@ class DepartmentController extends Controller
      */
     public function store(DepartmentRequest $request)
     {
+        
         Department::create($request->all());
         return redirect()->route('department.index')->
         with('success', 'Departamento agregado con éxito');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Period;
 use Illuminate\Http\Request;
+use App\Http\Requests\PeriodRequest;
 
 class PeriodController extends Controller
 {
@@ -33,9 +34,10 @@ class PeriodController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PeriodRequest $request)
     {
-        //
+        $period = Period::create($request->all());
+        return redirect()->route('course.period', $period->id);
     }
 
     /**

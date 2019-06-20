@@ -7,7 +7,7 @@
 
     {{-- Period area --}}
     <div class="col-md-12">
-        <div class="card">
+        <div class="card" style="margin: 0;">
             <div class="card-body">
                 <div class="row align-items-center">
 
@@ -42,7 +42,7 @@
                     {{-- Button new course --}}
                     <div class="col-md-4 col-xl-3">
                         <a class="btn btn-info btn-block"
-                            href="">
+                            href="{{route('course.create', $period->id)}}">
                             Nuevo curso
                         </a>
                     </div>
@@ -62,8 +62,10 @@
                     <h4 class="card-title">{{$course->name}}</h4>
                     <h6 class="card-subtitle mb-2 mt-1 text-muted">{{$course->department}}</h6>
                     <p class="card-text">{{$course->description}}</p>
-                    <a href="#0" class="card-link">Card link</a>
-                    <a href="#0" class="card-link">Another link</a>
+                        <a href="{{route('course.show', $course->id)}}" 
+                            class="btn btn-primary btn-sm">
+                            Más información
+                        </a>
                 </div>
             </div>
         </div>   

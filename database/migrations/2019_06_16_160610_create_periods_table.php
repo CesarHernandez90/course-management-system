@@ -18,7 +18,7 @@ class CreatePeriodsTable extends Migration
             $table->string('name', 150);
             $table->date('start');
             $table->date('end');
-            $table->boolean('active');
+            $table->boolean('active')->default(false);
             $table->timestamps();
         });
     }
