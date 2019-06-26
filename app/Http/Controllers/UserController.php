@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\UserRequest;
+use App\Profile;
 
 class UserController extends Controller
 {
@@ -16,11 +17,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = DB::table('users')->
-        join('departments', 'users.id', 'departments.id')->
-        select('users.*', 'departments.name as department')->
-        paginate(10);
-        return view('user/index-user', compact(['users']));
+
+        $users = User::get();
+        /* foreach ($users as $user) {
+            echo($user->profile->name);
+        } */
+        return view('user/index-user', compact('users'));
     }
 
     /**

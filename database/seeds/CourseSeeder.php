@@ -31,10 +31,10 @@ class CourseSeeder extends Seeder
             'name' => 'Material didáctico: Redes sociales',
             'schedule' => 'Lunes - Viernes de 14-16hrs.',
             'description' => 'Lorem Ipsum dolor',
-            'id_course_type' => 2,
-            'id_period' => 1,
-            'id_department' => 2,
-            'id_teacher' => 2
+            'course_type_id' => 2,
+            'period_id' => 1,
+            'department_id' => 2,
+            'teacher_id' => 2
         ]);
     }
 }

@@ -19,7 +19,7 @@
                                 <button class="btn btn-secondary dropdown-toggle btn-block" type="button"
                                     id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                                     aria-expanded="false">
-                                    {{$selectedPeriod[0]->name}}
+                                    {{$fatherPeriod->name}}
                                 </button>
                                 <div class="dropdown-menu btn-block" aria-labelledby="dropdownMenuButton">
                                     @foreach ($periods as $period)
@@ -42,7 +42,7 @@
                     {{-- Button new course --}}
                     <div class="col-md-4 col-xl-3">
                         <a class="btn btn-info btn-block"
-                            href="{{route('course.create', $period->id)}}">
+                            href="{{route('course.create', $fatherPeriod->id)}}">
                             Nuevo curso
                         </a>
                     </div>
@@ -60,7 +60,7 @@
                     class="card-img-top">
                 <div class="card-body">
                     <h4 class="card-title">{{$course->name}}</h4>
-                    <h6 class="card-subtitle mb-2 mt-1 text-muted">{{$course->department}}</h6>
+                    <h6 class="card-subtitle mb-2 mt-1 text-muted">{{$course->department->name}}</h6>
                     <p class="card-text">{{$course->description}}</p>
                         <a href="{{route('course.show', $course->id)}}" 
                             class="btn btn-primary btn-sm">

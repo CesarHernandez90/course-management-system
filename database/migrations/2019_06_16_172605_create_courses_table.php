@@ -20,14 +20,14 @@ class CreateCoursesTable extends Migration
             $table->text('description')->nullable();
             $table->string('img', 150)->nullable()->default('default.jpg');
             $table->timestamps();
-            $table->bigInteger('id_course_type')->unsigned();
-            $table->bigInteger('id_period')->unsigned();
-            $table->bigInteger('id_department')->unsigned();
-            $table->bigInteger('id_teacher')->unsigned()->nullable();
-            $table->foreign('id_course_type')->references('id')->on('course_types');
-            $table->foreign('id_period')->references('id')->on('periods');
-            $table->foreign('id_department')->references('id')->on('departments');
-            $table->foreign('id_teacher')->references('id')->on('users');
+            $table->bigInteger('course_type_id')->unsigned();
+            $table->bigInteger('period_id')->unsigned();
+            $table->bigInteger('department_id')->unsigned();
+            $table->bigInteger('teacher_id')->unsigned()->nullable();
+            $table->foreign('course_type_id')->references('id')->on('course_types');
+            $table->foreign('period_id')->references('id')->on('periods');
+            $table->foreign('department_id')->references('id')->on('departments');
+            $table->foreign('teacher_id')->references('id')->on('profiles');
         });
     }
 

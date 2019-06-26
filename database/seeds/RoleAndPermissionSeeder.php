@@ -1,6 +1,7 @@
 <?php
 
 use App\User;
+use App\Profile;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -39,19 +40,28 @@ class RoleAndPermissionSeeder extends Seeder
         $role = Role::create(['name' => 'super-admin']);
         $role->givePermissionTo(Permission::all());
 
+        Profile::create([
+            'name' => 'Mojica Bernalda',
+            'department_id' => 1,
+        ]);
+
+        Profile::create([
+            'name' => 'Jessica Puga',
+            'department_id' => 2,
+        ]);
+
         $moderator = User::create([
-            'name' => 'Mojica',
             'email' => 'mojica@gmail.com',
             'password' => bcrypt('12345678'),
-            'id_department' => 1,
+            'profile_id' => 1,
         ]);
         $moderator->assignRole('moderator');
 
         $admin = User::create([
-            'name' => 'Yecka',
+            //'name' => 'Yecka',
             'email' => 'yecka@gmail.com',
             'password' => bcrypt('12345678'),
-            'id_department' => 2,
+            'profile_id' => 2,
         ]);
         $admin->assignRole('super-admin');
     }

@@ -94,14 +94,14 @@
                     </div>
 
                     {{-- Hidden imputs --}}
-                    <input type="hidden" name="id_period" value="{{$period->id}}">
-                    <input type="hidden" name="id_department" value="{{Auth::user()->id_department}}">
+                    <input type="hidden" name="id_period" value="{{$fatherPeriod->id}}">
+                    <input type="hidden" name="id_department" value="{{auth()->user()->profile->department_id}}">
 
                     <div class="form-group text-right">
                         <button type="submit" class="btn btn-primary">
                             Crear curso
                         </button>
-                        <a class="btn btn-info" href="{{route('course.period', $period->id)}}">
+                        <a class="btn btn-info" href="{{route('course.period', $fatherPeriod->id)}}">
                             Cancelar
                         </a>
                     </div>

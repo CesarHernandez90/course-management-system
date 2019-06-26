@@ -7,7 +7,7 @@
     <div class="logo">
         <a href="" 
             class="simple-text logo-normal">
-            {{ Auth::user()->name }}
+            {{ auth()->user()->profile->name }}
         </a>
         <a class="simple-link" 
             href="{{ route('logout') }}"

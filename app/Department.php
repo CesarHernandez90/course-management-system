@@ -13,4 +13,9 @@ class Department extends Model
     protected $guarded = [
         'id'
     ];
+
+    public function profiles()
+    {
+        return $this->hasMany(Profile::class);
+    }
 }

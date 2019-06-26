@@ -25,12 +25,12 @@
                     <tbody>
                         @foreach ($users as $user)
                             <tr>
-                                <td>{{$user->name}}</td>
+                                <td>{{$user->profile->name}}</td>
                                 <td>{{$user->email}}</td>
-                                <td>{{$user->department}}</td>
+                                <td>{{$user->profile->department->name}}</td>
                                 @formActions([
                                     'id' => $user->id,
-                                    'name' => $user->name,
+                                    'name' => $user->profile->name,
                                     'route' => 'user'
                                 ]) @endformActions
                             </tr>

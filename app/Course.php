@@ -20,4 +20,24 @@ class Course extends Model
     protected $guarded = [
         'id'
     ];
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
+    }
+
+    public function courseType()
+    {
+        return $this->belongsTo(CourseType::class);
+    }
+
+    public function teacher()
+    {
+        return $this->belongsTo(Profile::class);
+    }
+
+    public function period()
+    {
+        return $this->belongsTo(Period::class);
+    }
 }

@@ -8,6 +8,7 @@ use App\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\CourseRequest;
+use App\Profile;
 
 class CourseController extends Controller
 {
@@ -18,33 +19,18 @@ class CourseController extends Controller
      */
     public function index()
     {   
-        $selectedPeriod = DB::table('periods')->
-        orderBy('id', 'desc')->oldest()->value('id');
-        return redirect(route('course.period', $selectedPeriod));
+        $period = Period::first();
+        return redirect(route('course.period', $period));
     }
 
-    public function period(Period $period) 
+    public function period(Period $fatherPeriod) 
     {
-        $selectedPeriod = DB::table('periods')->
-        where('id', '=', $period->id)->latest()->get();
-
-        $periods = DB::table('periods')->get();
-        $courses = DB::table('courses')->
-        where('id_period', '=', $period->id)->
-        join('departments', 'courses.id_department', 'departments.id')->
-        join('course_types', 'courses.id_course_type', 'course_types.id')->
-        join('periods', 'courses.id_period', 'periods.id')->
-        join('users', 'courses.id_teacher', 'users.id')->
-        select(
-            'courses.*',
-            'departments.name as department',
-            'course_types.name as course_type',
-            'periods.name as period',
-            'users.name as teacher')->
-        get();
+        $courses = Course::where('period_id', $fatherPeriod->id)->get();
+        $periods = Period::get();
+        //$fatherPeriod = $period;
 
         return view('course/index-course',
-            compact(['periods', 'courses', 'selectedPeriod']));
+            compact(['periods', 'courses', 'fatherPeriod']));
     }
 
     /**
@@ -52,13 +38,12 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Period $period)
+    public function create(Period $fatherPeriod)
     {
-        $courseTypes = DB::table('course_types')->get();
-        $teachers = DB::table('users')->
-        where('id_department', '=', auth()->user()->id_department)->get();
+        $courseTypes = Course::get();
+        $teachers = Profile::where('department_id', auth()->user()->profile->department_id)->get();
         return view('course/create-course',
-            compact(['period', 'courseTypes', 'teachers']));
+            compact(['fatherPeriod', 'courseTypes', 'teachers']));
     }
 
     /**
