@@ -1,6 +1,7 @@
 <nav class="navbar 
             navbar-expand-lg 
-            navbar-transparent 
+            navbar-transparent
+            bg-white
             navbar-absolute 
             fixed-top">
     <div class="container-fluid">

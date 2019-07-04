@@ -25,8 +25,12 @@ Route::group(['middleware' => ['role:super-admin']], function () {
     Route::resource('/course', 'CourseController')->except('create');
     Route::get('/course/create/{fatherPeriod}', 'CourseController@create')->name('course.create');
     Route::get('/course/period/{fatherPeriod}', 'CourseController@period')->name('course.period');
+
+    
     
 });
+
+Route::get('/offer', 'OfferController@index')->name('offer.index');
 
 Auth::routes();
 

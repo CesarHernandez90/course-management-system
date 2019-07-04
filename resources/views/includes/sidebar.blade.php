@@ -5,13 +5,10 @@
 
     {{-- Logo --}}
     <div class="logo">
-        <a href="" 
-            class="simple-text logo-normal">
-            {{ auth()->user()->profile->name }}
+        <a href="" class="simple-text logo-normal">
+            {{-- {{ auth()->user()->profile->name }} --}}
         </a>
-        <a class="simple-link" 
-            href="{{ route('logout') }}"
-            onclick="
+        <a class="simple-link" href="{{ route('logout') }}" onclick="
                 event.preventDefault();
                 document.getElementById('logout-form').submit();">
             Cerrar sesión
@@ -20,11 +17,13 @@
             @csrf
         </form>
     </div>
-
-    {{-- Menu --}}
+        
+    {{-- Menu --}}   
+    
     <div class="sidebar-wrapper">
-
         <ul class="nav">
+
+            @role('super-admin') 
 
             <li class="nav-item {{ request()->is('user*') ? 'active' : '' }}">
                 <a class="nav-link"
@@ -58,7 +57,9 @@
                 </a>
             </li>
 
-        </ul>
+            @endrole
+        </ul> 
     </div>
+    
 
 </div>
