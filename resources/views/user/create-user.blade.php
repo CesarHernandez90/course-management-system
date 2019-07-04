@@ -3,8 +3,8 @@
 @section('title', 'Nuevo departamento')
 @section('navbar-title')
     @navbarTitle([
-        'url' => 'department.index',
-        'title' => 'Departamentos'
+        'url' => 'user.index',
+        'title' => 'Usuarios'
     ]) @endnavbarTitle
 @endsection
 
@@ -12,7 +12,7 @@
 <div class="col-md-12">
     <div class="card">
         <div class="card-body">
-            <form action=" {{route('department.store')}} " method="POST">
+            <form action=" {{route('user.store')}} " method="POST">
                 @csrf
                 <div class="form-group">
                     <label for="name">
@@ -32,10 +32,10 @@
                 </div>
                 <button type="submit" 
                     class="btn btn-primary">
-                    Crear departamento
+                    Crear usuario
                 </button>
                 <a class="btn btn-info"
-                    href="{{route('department.index')}}">
+                    href="{{route('user.index')}}">
                     Cancelar
                 </a>
             </form>

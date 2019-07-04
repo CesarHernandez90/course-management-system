@@ -18,7 +18,6 @@
             <span class="navbar-toggler-icon icon-bar"></span>
         </button>
 
-
         {{-- Menu --}}
         <div class="collapse navbar-collapse justify-content-end">
 
@@ -27,13 +26,12 @@
 
             <ul class="navbar-nav">
 
-                {{-- Notificaciones --}}
+                {{-- Cursos --}}
                 <li class="nav-item">
                     <a class="nav-link" 
                         href="#">
-                        <i class="material-icons">notifications</i>
-                        <span class="notification">2</span>
-                        <p> notificaciones</p>
+                        <i class="material-icons">person</i>
+                        <p style="display: inline;">Mis cursos</p>
                     </a>
                 </li>
 
@@ -42,7 +40,17 @@
                     <a class="nav-link" 
                         href="#">
                         <i class="material-icons">person</i>
-                        <p>Perfil</p>
+                        <p style="display: inline;">Mi perfil</p>
+                    </a>
+                </li>
+
+                {{-- Notificaciones --}}
+                <li class="nav-item">
+                    <a class="nav-link" 
+                        href="#">
+                        <i class="material-icons">notifications</i>
+                        <span class="notification">2</span>
+                        <p> notificaciones</p>
                     </a>
                 </li>
 

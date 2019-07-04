@@ -22,10 +22,6 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->bigInteger('profile_id')->unsigned()->nullable();
             $table->foreign('profile_id')->references('id')->on('profiles');
-            /* Esto está ahora en la tabla Profile */
-            //$table->string('name');
-            //$table->bigInteger('id_department')->unsigned()->nullable();
-            //$table->foreign('id_department')->references('id')->on('departments');
         });
     }
 

@@ -41,9 +41,19 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(Request $request)
     {
-        User::create($request->all());
+        $profile = new Profile;
+        $profile->name = 'El nombre';
+        $profile->save();
+
+        $user = new User;
+        $user->email = 'elcorreo@gmail.com';
+        $user->password = bcrypt('12345678');
+        $user->profile_id = $profile->id;
+        $user->save();
+
+        //User::create($request->all());
         return redirect()->route('user.index')->
         with('success', 'Usuario agregado con éxito');
     }
