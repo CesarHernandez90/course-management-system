@@ -49,13 +49,13 @@
                 </a>
             </li>
 
-            <li class="nav-item {{ request()->is('coursetype*') ? 'active' : '' }}">
+            {{-- <li class="nav-item {{ request()->is('coursetype*') ? 'active' : '' }}">
                 <a class="nav-link"
                     href="{{route('coursetype.index')}}">
                     <i class="material-icons">library_books</i>
                     <p>Tipos de cursos</p>
                 </a>
-            </li>
+            </li> --}}
 
             @endrole
         </ul> 

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CourseRequest extends FormRequest
+class UserEditRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,27 +28,20 @@ class CourseRequest extends FormRequest
                 'required',
                 'max:50'
             ],
-            'schedule' => [
-                'max:150'
+            'email' => [
+                'required',
+                'max:50',
+                'unique:users,email,'
+                    . ($this->user ? $this->user->id : null)
             ],
-            'course_type_id' => [
-                'required'
-            ],
-            'period_id' => [
-                'required'
-            ],
-            'department_id' => [
-                'required'
-            ]
         ];
     }
 
     public function messages() {
         return [
             'name.required' => 'El nombre es obligatorio',
-            'schedule.max' => 'La descripción del horario contiene demasiados caracteres',
-            'id_course_type' => 'El tipo de curso es obligatorio',
-            'id_period' => 'El periodo es obligatorio',
+            'email.required' => 'El correo electrónico es obligatorio',
+            'email.unique' => 'Ese correo electrónico ya está en uso',
         ];
     }
 }

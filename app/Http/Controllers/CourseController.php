@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Course;
 use App\Period;
 use App\Auth;
+use App\CourseType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\CourseRequest;
@@ -40,7 +41,7 @@ class CourseController extends Controller
      */
     public function create(Period $fatherPeriod)
     {
-        $courseTypes = Course::get();
+        $courseTypes = CourseType::get();
         $teachers = Profile::where('department_id', auth()->user()->profile->department_id)->get();
         return view('course/create-course',
             compact(['fatherPeriod', 'courseTypes', 'teachers']));
@@ -65,13 +66,13 @@ class CourseController extends Controller
             'schedule' => $request->schedule,
             'description' => $request->description,
             'img' => $name,
-            'id_course_type' => $request->id_course_type,
-            'id_period' => $request->id_period,
-            'id_department' => $request->id_department,
-            'id_teacher' => $request->id_teacher
+            'course_type_id' => $request->course_type_id,
+            'period_id' => $request->period_id,
+            'department_id' => $request->department_id,
+            'teacher_id' => $request->teacher_id
         ]);
-
-        return redirect()->route('course.period', $request->id_period);
+        //Course::create($request->all());
+        return redirect()->route('course.period', $request->period_id);
     }
 
     /**
@@ -82,7 +83,15 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        echo($course);
+        //echo($course);
+        $canApply = DB::table('course_profile')->where([
+            ['course_id', $course->id,],
+            ['profile_id', auth()->user()->profile->id]
+        ])->exists();
+        $canApply = !$canApply;
+        $profiles = $course->profiles;
+        //dd($canApply);
+        return view('course/show-course', compact(['course', 'canApply', 'profiles']));
     }
 
     /**
@@ -106,6 +115,35 @@ class CourseController extends Controller
     public function update(Request $request, Course $course)
     {
         //
+    }
+
+    public function applyCourse(Course $course)
+    {
+        /* DB::table('course_vs_profile')->insert([
+            'course_id' => $course->id,
+            'profile_id' => auth()->user()->profile->id
+        ]); */
+
+        $profile_id = auth()->user()->profile->id;
+        $course->profiles()->attach($profile_id);
+
+        return redirect()->route('course.show', $course->id)
+        ->with('success','Te has suscrito al curso ' 
+        . $course->name.'. ¡Felicitaciones!');
+    }
+
+    public function leaveCourse(Course $course)
+    {
+        /* DB::table('course_vs_profile')->where([
+            ['course_id', $course->id],
+            ['profile_id', auth()->user()->profile->id]
+        ])->delete(); */
+
+        $profile_id = auth()->user()->profile->id;
+        $course->profiles()->detach($profile_id);
+
+        return redirect()->route('course.show', $course->id)
+        ->with('warning','Has abandonado el curso ' . $course->name);
     }
 
     /**

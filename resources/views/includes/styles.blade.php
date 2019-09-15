@@ -1,7 +1,11 @@
 <link rel="stylesheet"
-    href="{{asset('css/material-dashboard.css?v=2.1.1')}}" />
+    href="{{asset('css/material-dashboard.css?v=2.1.1')}}" />   
 <link rel="stylesheet"
     href="{{asset('css/plugins/bootstrap-datetimepicker.css')}}" />
+<link rel="stylesheet"
+    href="{{asset('css/plugins/bootstrap-select.css')}}" />
+    <link rel="stylesheet"
+    href="{{asset('css/custom.css')}}" />
 
 <link rel="stylesheet"
     type="text/css"

@@ -29,23 +29,34 @@
                                         </a>   
                                     @endforeach
                                     <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item text-warning text-uppercase" 
-                                            href="{{route('period.create')}}">
-                                            Crear un nuevo periodo
-                                        </a>
-                                    </div>
+                                    <a class="dropdown-item text-uppercase" 
+                                        href="{{route('period.index')}}">
+                                        Ver todos los periodos
+                                    </a>
+                                    {{-- <div class="dropdown-divider"></div> --}}
+                                    <a class="dropdown-item text-uppercase" 
+                                        href="{{route('coursetype.index')}}" >
+                                        Ver todos los tipos de cursos
+                                    </a>
+                                </div>                     
                             </div>
 
                         </div>
                     </div>
 
-                    {{-- Button new course --}}
-                    <div class="col-md-4 col-xl-3">
-                        <a class="btn btn-info btn-block"
-                            href="{{route('course.create', $fatherPeriod->id)}}">
-                            Nuevo curso
+                    <div class="dropdown show">
+                        <a class="btn btn-info dropdown-toggle" role="button" 
+                            id="dropdownMenuLink" data-toggle="dropdown" 
+                            aria-haspopup="true" aria-expanded="false">
+                          Crear nuevo
                         </a>
-                    </div>
+                      
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="{{route('course.create', $fatherPeriod->id)}}">Curso</a>
+                            <a class="dropdown-item" href="{{route('period.create')}}">Periodo</a>
+                            <a class="dropdown-item" href="{{route('coursetype.create')}}">Tipo de curso</a>
+                        </div>
+                      </div>
 
                 </div>
             </div>
@@ -62,10 +73,10 @@
                     <h4 class="card-title">{{$course->name}}</h4>
                     <h6 class="card-subtitle mb-2 mt-1 text-muted">{{$course->department->name}}</h6>
                     <p class="card-text">{{$course->description}}</p>
-                        <a href="{{route('course.show', $course->id)}}" 
-                            class="btn btn-primary btn-sm">
-                            Más información
-                        </a>
+                    <a href="{{route('course.show', $course->id)}}" 
+                        class="btn btn-primary btn-sm">
+                        Más información
+                    </a>
                 </div>
             </div>
         </div>   

@@ -63,7 +63,7 @@ class DepartmentController extends Controller
      */
     public function edit(Department $department)
     {
-        return view('department/edit-department', compact('department'));
+        return view('department/edit-department', compact(['department']));
     }
 
     /**

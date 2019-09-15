@@ -48,33 +48,7 @@
                                 </small>
                             @endforeach
                         @endif
-                    </div>
-
-                    {{-- Tipo de curso --}}
-                    <div class="form-group">
-                        <label for="courseType">Tipo de curso</label>
-                        <select class="form-control"
-                            id="courseType" name="id_course_type">
-                            @foreach ($courseTypes as $courseType)
-                                <option value="{{$courseType->id}}">
-                                    {{$courseType->name}}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    {{-- Docente --}}
-                    <div class="form-group">
-                        <label for="teacher">Docente</label>
-                        <select class="form-control"
-                            id="teacher" name="id_teacher">
-                            @foreach ($teachers as $teacher)
-                                <option value="{{$courseType->id}}">
-                                    {{$teacher->name}}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
+                    </div>          
 
                     {{-- Descripción --}}
                     <div class="form-group">
@@ -86,6 +60,36 @@
                         </textarea>
                     </div>
 
+                    {{-- Tipo de curso --}}
+                    <div class="form-group">
+                            <label for="courseType">Tipo de curso</label>
+                            <div class="dropdown bootstrap-select form-control select-margin">
+                                <select class="form-control selectpicker" id="courseType" data-live-search="true"
+                                    name="course_type_id">
+                                    @foreach ($courseTypes as $courseType)
+                                    <option value="{{$courseType->id}}">
+                                        {{$courseType->name}}
+                                    </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+    
+                        {{-- Docente --}}
+                        <div class="form-group">
+                            <label for="teacher">Docente</label>
+                            <div class="dropdown bootstrap-select form-control select-margin">
+                                <select class="form-control selectpicker" id="teacher" data-live-search="true"
+                                    name="teacher_id">
+                                    @foreach ($teachers as $teacher)
+                                    <option value="{{$courseType->id}}">
+                                        {{$teacher->name}}
+                                    </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>      
+
                     {{-- Imágen --}}
                     <div class="sform-group">
                         <label for="exampleFormControlFile1">Seleccionar imágen</label>
@@ -94,8 +98,8 @@
                     </div>
 
                     {{-- Hidden imputs --}}
-                    <input type="hidden" name="id_period" value="{{$fatherPeriod->id}}">
-                    <input type="hidden" name="id_department" value="{{auth()->user()->profile->department_id}}">
+                    <input type="hidden" name="period_id" value="{{$fatherPeriod->id}}">
+                    <input type="hidden" name="department_id" value="{{auth()->user()->profile->department_id}}">
 
                     <div class="form-group text-right">
                         <button type="submit" class="btn btn-primary">

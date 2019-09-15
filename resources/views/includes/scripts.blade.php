@@ -14,7 +14,7 @@
 <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
 <script src="{{asset('./js/plugins/jquery.bootstrap-wizard.js')}}"></script>
 <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
-<script src="{{asset('./js/plugins/bootstrap-selectpicker.js')}}"></script>
+<script src="{{asset('./js/plugins/bootstrap-select.min.js')}}"></script>
 <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
 <script src="{{asset('./js/plugins/bootstrap-datetimepicker.min.js')}}"></script>
 <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
@@ -52,7 +52,19 @@
         modal.find('.modal-body #deleteName').text('Esta realmente seguro de que quiere eliminar a ' + name)
         modal.find('.modal-footer #deleteId').val(id)
         modal.find('.modal-footer #deleteName').val(name)
-    })
+    });
+
+    $().ready(function() {
+      if($('#displayAlert').is(':visible')) {
+        //alert('hola!')
+        message = $('#displayAlert').data('message');
+        color = $('#displayAlert').data('color');
+        align = $('#displayAlert').data('align');
+        md.showNotification(align,'center', message, color);
+      }
+    });
+
+    
 </script>
 
 {{-- Date time picker --}}

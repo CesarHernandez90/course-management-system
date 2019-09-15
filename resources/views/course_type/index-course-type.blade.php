@@ -1,7 +1,12 @@
 @extends('layouts/main-layout')
 
 @section('title', 'Tipos de cursos')
-@section('navbar-title', '')
+@section('navbar-title')
+    @navbarTitle([
+        'url' => 'course.index',
+        'title' => 'Cursos'
+    ]) @endnavbarTitle
+@endsection
 
 @section('content')
     <div class="col-md-12">

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
     protected $fillable = [
-        'name', 'id_user', 'id_department'
+        'name', 'department_id'
     ];
 
     protected $guarded = [
@@ -18,11 +18,14 @@ class Profile extends Model
     public function user() 
     {
         return $this->hasOne(User::class);
-        //return $this->belongsTo(User::class, 'id_user');
     }
 
     public function department()
     {
         return $this->belongsTo(Department::class);
+    }
+
+    public function courses() {
+        return $this->belongsToMany(Course::class);
     }
 }

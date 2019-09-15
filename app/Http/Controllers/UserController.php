@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Department;
 use App\User;
+use App\Profile;
+use App\Http\Requests\UserEditRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\UserRequest;
-use App\Profile;
 
 class UserController extends Controller
 {
@@ -77,7 +79,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('user/edit-user', compact('user'));
+        $departments = Department::get();
+        return view('user/edit-user', compact(['user', 'departments']));
     }
 
     /**
@@ -87,11 +90,22 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $request, User $user)
+    public function update(UserEditRequest $request, User $user)
     {
-        $user->update($request->all());
+        $profile = Profile::find($user->profile_id);
+        $profile->department_id = $request->department_id;
+        $profile->name = $request->name;
+        $profile->save();
+
+        $user->email = $request->email;
+        $user->save();
+
         return redirect()->route('user.index')
-        ->with('success','Usuario ' . $request->name . ' actualizado satisfactoriamente');
+        ->with('success','Usuario <a href="' 
+        . route('user.edit', $user) 
+        . '" class="alert-link">' 
+        . $request->name 
+        .'</a> ha sido actualizado satisfactoriamente');
     }
 
     /**

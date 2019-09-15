@@ -32,7 +32,7 @@
 
         <div class="content mtop-0">
             <div class="container-fluid">
-                <div class="row">
+                <div class="row justify-content-center">
                     
                     {{-- Content --}}
                     @yield('content')

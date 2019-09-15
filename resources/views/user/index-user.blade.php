@@ -11,6 +11,12 @@
             Nuevo usuario
         </a>
 
+        @if ($message=Session::get('success'))
+        <div id="displayAlert" data-color="success" data-align="bottom"
+            data-message="{{$message}}">
+        </div>
+        @endif
+
         <div class="card" style="margin-top: 5px;">
             <div class="card-body">
 

@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     return redirect('/login');
 });
@@ -25,8 +27,8 @@ Route::group(['middleware' => ['role:super-admin']], function () {
     Route::resource('/course', 'CourseController')->except('create');
     Route::get('/course/create/{fatherPeriod}', 'CourseController@create')->name('course.create');
     Route::get('/course/period/{fatherPeriod}', 'CourseController@period')->name('course.period');
-
-    
+    Route::get('/course/applyCourse/{course}', 'CourseController@applyCourse')->name('course.applyCourse');
+    Route::get('/course/leaveCourse/{course}', 'CourseController@leaveCourse')->name('course.leaveCourse');
     
 });
 

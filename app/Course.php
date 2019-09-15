@@ -11,10 +11,10 @@ class Course extends Model
         'schedule', 
         'description',
         'img',
-        'id_course_type',
-        'id_period',
-        'id_department',
-        'id_teacher'
+        'course_type_id',
+        'period_id',
+        'department_id',
+        'teacher_id'
     ];
 
     protected $guarded = [
@@ -39,5 +39,10 @@ class Course extends Model
     public function period()
     {
         return $this->belongsTo(Period::class);
+    }
+
+    public function profiles()
+    {
+        return $this->belongsToMany(Profile::class);
     }
 }
